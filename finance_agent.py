@@ -23,12 +23,16 @@ memory = SqliteSaver.from_conn_string(":memory:")
 # Load environment variables from .env file
 load_dotenv()
 
-openai_key = os.getenv("OPENAI_API_KEY")
+# openai_key = os.getenv("OPENAI_API_KEY")
+# tavily = os.getenv("TAVILY_API_KEY")
 
-tavily = os.getenv("TAVILY_API_KEY")
+openai_key = "sk-TsoMJYTiW1Ya1AatboGdUGXEdCOAWeCeIbvUCkNMonrCHoQ7"
+tavily = "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"
 
 llm_name = "gpt-3.5-turbo"
-model = ChatOpenAI(api_key=openai_key, model=llm_name)
+model = ChatOpenAI(api_key=openai_key, 
+                   openai_api_base= "https://api.feidaapi.com/v1",
+                   model=llm_name)
 
 from tavily import TavilyClient
 
